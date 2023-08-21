@@ -95,6 +95,8 @@ function step() {
     }
 }
 
+canvas.down = false;
+
 // from www.java2s.com
 canvas.addEventListener('mousedown', function (e) {
     this.down = true;
