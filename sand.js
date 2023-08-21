@@ -119,6 +119,38 @@ this.addEventListener('mousemove', function (e) {
     canvas.Y = e.pageY;
 }, 0);
 
+
+// Touch events: https://developer.mozilla.org/en-US/docs/Web/API/Touch_events
+// note that touch location can be float, so we should floor or round it
+function touchStart(e) {
+    e.preventDefault();
+    canvas.down = true;
+    canvas.X = Math.floor(e.touches[0].pageX);
+    canvas.Y = Math.floor(e.touches[0].pageY);
+}
+
+function touchMove(e) {
+    e.preventDefault();
+    canvas.X = Math.floor(e.touches[0].pageX);
+    canvas.Y = Math.floor(e.touches[0].pageY);
+}
+
+function touchCancel(e) {
+    e.preventDefault();
+    canvas.down = false;
+}
+
+function touchEnd(e) {
+    e.preventDefault();
+    canvas.down = false;
+}
+
+addEventListener("touchstart", touchStart, false);
+addEventListener("touchmove", touchMove, false);
+addEventListener("touchcancel", touchCancel, false);
+addEventListener("touchend", touchEnd, false);
+
+
 clearScreen();
 
 // Start the first frame request
