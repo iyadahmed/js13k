@@ -51,17 +51,20 @@ function swapRGB(x0, y0, x1, y1) {
 }
 
 function stepPerPixel(i, j) {
+    // Skip empty cells
     if (isEmpty(i, j)) return;
+    // Handle collision with ground
     if ((j + 1) >= canvas.height) return;
-    if ((j - 1) < 0) return;
-    if ((i - 1) < 0) return;
-    if ((i + 1) >= canvas.width) return;
     let downI = i;
     let downJ = j + 1;
     if (isEmpty(downI, downJ)) {
         swapRGB(i, j, downI, downJ);
         return;
     }
+    // Prevent sand from going through left and right walls
+    if ((i - 1) < 0) return;
+    if ((i + 1) >= canvas.width) return;
+    // Randomize choosing sliding direction (left or right)
     if (Math.random() > 0.5) {
         let downLeftI = i - 1;
         let downLeftJ = j + 1;
@@ -94,6 +97,7 @@ function stepPerPixel(i, j) {
 
 function step() {
     for (let i = 0; i < canvas.width; i++) {
+        // Processing simulation from bottom to top is very important!
         for (let j = canvas.height; j > 0; j--) {
             stepPerPixel(i, j);
         }
