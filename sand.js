@@ -41,7 +41,7 @@ function setRGB(x, y, r, g, b) {
 function isEmpty(x, y) {
   if (data[4 * (x + y * canvas.width) + 0] > 0) return false;
   if (data[4 * (x + y * canvas.width) + 1] > 0) return false;
-  return !(data[4 * (x + y * canvas.width) + 2] > 0);
+  return data[4 * (x + y * canvas.width) + 2] <= 0;
 }
 
 function swapRGB(x0, y0, x1, y1) {
@@ -105,7 +105,7 @@ function step() {
 canvas.down = false;
 
 // from www.java2s.com
-this.addEventListener(
+addEventListener(
   "mousedown",
   function (e) {
     canvas.down = true;
@@ -114,14 +114,14 @@ this.addEventListener(
   },
   0
 );
-this.addEventListener(
+addEventListener(
   "mouseup",
   function () {
     canvas.down = false;
   },
   0
 );
-this.addEventListener(
+addEventListener(
   "mousemove",
   function (e) {
     canvas.X = e.clientX;
