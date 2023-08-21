@@ -94,7 +94,7 @@ function stepPerPixel(i, j) {
 
 function step() {
     for (let i = 0; i < canvas.width; i++) {
-        for (let j = 0; j < canvas.height; j++) {
+        for (let j = canvas.height; j > 0; j--) {
             stepPerPixel(i, j);
         }
     }
