@@ -61,6 +61,7 @@ function stepPerPixel(i, j) {
     return;
   }
   // Prevent sand from going through left and right walls
+  // FIXME: this actually makes it stick in some case
   if (i - 1 < 0) return;
   if (i + 1 >= canvas.width) return;
   // Randomize choosing sliding direction (left or right)
@@ -102,33 +103,27 @@ function step() {
   }
 }
 
+// Initialize canvas down state to false
 canvas.down = false;
 
-// from www.java2s.com
-addEventListener(
-  "mousedown",
-  function (e) {
-    canvas.down = true;
-    canvas.X = e.clientX;
-    canvas.Y = e.clientY;
-  },
-  0
-);
-addEventListener(
-  "mouseup",
-  function () {
-    canvas.down = false;
-  },
-  0
-);
-addEventListener(
-  "mousemove",
-  function (e) {
-    canvas.X = e.clientX;
-    canvas.Y = e.clientY;
-  },
-  0
-);
+function mouseDown(e) {
+  canvas.down = true;
+  canvas.X = e.clientX;
+  canvas.Y = e.clientY;
+}
+
+function mouseUp(e) {
+  canvas.down = false;
+}
+
+function mouseMove(e) {
+  canvas.X = e.clientX;
+  canvas.Y = e.clientY;
+}
+
+addEventListener("mousedown", mouseDown, false);
+addEventListener("mouseup", mouseUp, false);
+addEventListener("mousemove", mouseMove, false);
 
 // Touch events: https://developer.mozilla.org/en-US/docs/Web/API/Touch_events
 // note that touch location can be float, so we should floor or round it
