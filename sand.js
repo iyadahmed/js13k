@@ -7,9 +7,6 @@ const canvas = document.getElementById("game");
 const context = canvas.getContext("2d");
 const brushSize = 10;
 
-canvas.width = 500;
-canvas.height = 500;
-
 let imageData = context.createImageData(canvas.width, canvas.height);
 let data = imageData.data;
 
