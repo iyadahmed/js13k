@@ -108,15 +108,15 @@ canvas.down = false;
 // from www.java2s.com
 this.addEventListener('mousedown', function (e) {
     canvas.down = true;
-    canvas.X = e.pageX;
-    canvas.Y = e.pageY;
+    canvas.X = e.clientX;
+    canvas.Y = e.clientY;
 }, 0);
 this.addEventListener('mouseup', function () {
     canvas.down = false;
 }, 0);
 this.addEventListener('mousemove', function (e) {
-    canvas.X = e.pageX;
-    canvas.Y = e.pageY;
+    canvas.X = e.clientX;
+    canvas.Y = e.clientY;
 }, 0);
 
 
@@ -125,14 +125,14 @@ this.addEventListener('mousemove', function (e) {
 function touchStart(e) {
     e.preventDefault();
     canvas.down = true;
-    canvas.X = Math.floor(e.touches[0].pageX);
-    canvas.Y = Math.floor(e.touches[0].pageY);
+    canvas.X = Math.floor(e.touches[0].clientX);
+    canvas.Y = Math.floor(e.touches[0].clientY);
 }
 
 function touchMove(e) {
     e.preventDefault();
-    canvas.X = Math.floor(e.touches[0].pageX);
-    canvas.Y = Math.floor(e.touches[0].pageY);
+    canvas.X = Math.floor(e.touches[0].clientX);
+    canvas.Y = Math.floor(e.touches[0].clientY);
 }
 
 function touchCancel(e) {
