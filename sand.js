@@ -52,8 +52,6 @@ function swapRGB(x0, y0, x1, y1) {
 }
 
 function stepPerPixel(i, j) {
-    // Skip empty cells
-    if (isEmpty(i, j)) return;
     // Handle collision with ground
     if ((j + 1) >= canvas.height) return;
     let downI = i;
