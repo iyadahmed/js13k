@@ -6,6 +6,7 @@
 
 const canvas = document.getElementById("game")
 const context = canvas.getContext("2d")
+const brushSize = 10;
 
 canvas.width = 500
 canvas.height = 500
@@ -122,8 +123,8 @@ function gameLoop(timeStamp) {
         let x = canvas.X - rect.left;
         let y = canvas.Y - rect.top;
 
-        for (let i = -5; i < 5; i++) {
-            for (let j = -5; j < 5; j++) {
+        for (let i = -brushSize; i < brushSize; i++) {
+            for (let j = -brushSize; j < brushSize; j++) {
                 if (x + i < 0 || x + i >= canvas.width) continue;
                 if (y + j < 0 || y + j >= canvas.height) continue;
                 if (!isEmpty(x + i, y + j)) continue;
