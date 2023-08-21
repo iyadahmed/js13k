@@ -146,10 +146,10 @@ function touchEnd(e) {
   canvas.down = false;
 }
 
-addEventListener("touchstart", touchStart, false);
-addEventListener("touchmove", touchMove, false);
-addEventListener("touchcancel", touchCancel, false);
-addEventListener("touchend", touchEnd, false);
+addEventListener("touchstart", touchStart);
+addEventListener("touchmove", touchMove);
+addEventListener("touchcancel", touchCancel);
+addEventListener("touchend", touchEnd);
 
 clearScreen();
 
