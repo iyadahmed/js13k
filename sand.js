@@ -97,7 +97,7 @@ function stepPerPixel(i, j) {
 function step() {
     for (let i = 0; i < canvas.width; i++) {
         // Processing simulation from bottom to top is very important!
-        for (let j = canvas.height; j > 0; j--) {
+        for (let j = canvas.height; j >= 0; j--) {
             stepPerPixel(i, j);
         }
     }
