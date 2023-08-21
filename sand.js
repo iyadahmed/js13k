@@ -51,7 +51,11 @@ function swapRGB(x0, y0, x1, y1) {
 }
 
 function stepPerPixel(i, j) {
+    if (isEmpty(i, j)) return;
     if ((j + 1) >= canvas.height) return;
+    if ((j - 1) < 0) return;
+    if ((i - 1) < 0) return;
+    if ((i + 1) >= canvas.width) return;
     let downI = i;
     let downJ = j + 1;
     if (isEmpty(downI, downJ)) {
