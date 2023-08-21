@@ -98,17 +98,17 @@ function step() {
 canvas.down = false;
 
 // from www.java2s.com
-canvas.addEventListener('mousedown', function (e) {
-    this.down = true;
-    this.X = e.pageX;
-    this.Y = e.pageY;
+this.addEventListener('mousedown', function (e) {
+    canvas.down = true;
+    canvas.X = e.pageX;
+    canvas.Y = e.pageY;
 }, 0);
-canvas.addEventListener('mouseup', function () {
-    this.down = false;
+this.addEventListener('mouseup', function () {
+    canvas.down = false;
 }, 0);
-canvas.addEventListener('mousemove', function (e) {
-    this.X = e.pageX;
-    this.Y = e.pageY;
+this.addEventListener('mousemove', function (e) {
+    canvas.X = e.pageX;
+    canvas.Y = e.pageY;
 }, 0);
 
 clearScreen();
