@@ -60,34 +60,30 @@ function stepPerPixel(i, j) {
     swapRGB(i, j, downI, downJ);
     return;
   }
-  // Prevent sand from going through left and right walls
-  // FIXME: this actually makes it stick in some case
-  if (i - 1 < 0) return;
-  if (i + 1 >= canvas.width) return;
   // Randomize choosing sliding direction (left or right)
   if (Math.random() > 0.5) {
     let downLeftI = i - 1;
     let downLeftJ = j + 1;
-    if (isEmpty(downLeftI, downLeftJ)) {
+    if (isEmpty(downLeftI, downLeftJ) && i - 1 >= 0) {
       swapRGB(i, j, downLeftI, downLeftJ);
       return;
     }
     let downRightI = i + 1;
     let downRightJ = j + 1;
-    if (isEmpty(downRightI, downRightJ)) {
+    if (isEmpty(downRightI, downRightJ) && i + 1 < canvas.width) {
       swapRGB(i, j, downRightI, downRightJ);
       return;
     }
   } else {
     let downRightI = i + 1;
     let downRightJ = j + 1;
-    if (isEmpty(downRightI, downRightJ)) {
+    if (isEmpty(downRightI, downRightJ) && i + 1 < canvas.width) {
       swapRGB(i, j, downRightI, downRightJ);
       return;
     }
     let downLeftI = i - 1;
     let downLeftJ = j + 1;
-    if (isEmpty(downLeftI, downLeftJ)) {
+    if (isEmpty(downLeftI, downLeftJ) && i - 1 >= 0) {
       swapRGB(i, j, downLeftI, downLeftJ);
       return;
     }
