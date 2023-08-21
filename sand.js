@@ -161,7 +161,7 @@ function pourSand(x, y) {
     for (let j = -brushSize; j < brushSize; j++) {
       if (x + i < 0 || x + i >= canvas.width) continue;
       if (y + j < 0 || y + j >= canvas.height) continue;
-      if (!isEmpty(x + i, y + j)) continue;
+      //   if (!isEmpty(x + i, y + j)) continue;
       setRGB(x + i, y + j, 205, 170, 109);
     }
   }
