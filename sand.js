@@ -39,8 +39,9 @@ function setRGB(x, y, r, g, b) {
 
 
 function isEmpty(x, y) {
-    let rgb = getRGB(x, y);
-    return rgb[0] === 0 && rgb[1] === 0 && rgb[2] === 0;
+    if (data[4 * (x + y * canvas.width) + 0] > 0) return false;
+    if (data[4 * (x + y * canvas.width) + 1] > 0) return false;
+    return !(data[4 * (x + y * canvas.width) + 2] > 0);
 }
 
 function swapRGB(x0, y0, x1, y1) {
