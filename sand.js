@@ -7,6 +7,21 @@ const canvas = document.getElementById("game");
 const context = canvas.getContext("2d");
 const brushSize = 10;
 
+canvas.width = 400;
+canvas.height = 400;
+
+const colorPicker = document.getElementById("color_picker");
+colorPicker.value = "#cdaa6d";
+
+// https://www.designcise.com/web/tutorial/how-to-get-html-color-input-element-value-in-rgb-using-javascript
+function getPickedColorRGB() {
+  let color = colorPicker.value;
+  const red = parseInt(color.substring(1, 3), 16);
+  const green = parseInt(color.substring(3, 5), 16);
+  const blue = parseInt(color.substring(5, 7), 16);
+  return [red, green, blue];
+}
+
 let imageData = context.createImageData(canvas.width, canvas.height);
 let data = imageData.data;
 
@@ -153,13 +168,13 @@ clearScreen();
 // Start the first frame request
 window.requestAnimationFrame(gameLoop);
 
-function pourSand(x, y) {
+function pourSand(x, y, r, g, b) {
   for (let i = -brushSize; i < brushSize; i++) {
     for (let j = -brushSize; j < brushSize; j++) {
       if (x + i < 0 || x + i >= canvas.width) continue;
       if (y + j < 0 || y + j >= canvas.height) continue;
       //   if (!isEmpty(x + i, y + j)) continue;
-      setRGB(x + i, y + j, 205, 170, 109);
+      setRGB(x + i, y + j, r, g, b);
     }
   }
 }
@@ -169,7 +184,8 @@ function gameLoop(timeStamp) {
     let rect = canvas.getBoundingClientRect();
     let x = canvas.X - rect.left;
     let y = canvas.Y - rect.top;
-    pourSand(x, y);
+    let [r, g, b] = getPickedColorRGB();
+    pourSand(x, y, r, g, b);
   }
   step();
   context.putImageData(imageData, 0, 0);
