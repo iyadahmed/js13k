@@ -160,10 +160,10 @@ function touchEnd(e) {
   canvas.down = false;
 }
 
-addEventListener("touchstart", touchStart, { passive: false });
-addEventListener("touchmove", touchMove, { passive: false });
-addEventListener("touchcancel", touchCancel, { passive: false });
-addEventListener("touchend", touchEnd, { passive: false });
+canvas.addEventListener("touchstart", touchStart, { passive: false });
+canvas.addEventListener("touchmove", touchMove, { passive: false });
+canvas.addEventListener("touchcancel", touchCancel, { passive: false });
+canvas.addEventListener("touchend", touchEnd, { passive: false });
 
 clearScreen();
 
